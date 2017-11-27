@@ -25,15 +25,20 @@ def test_get_coach()
   assert_equal('Sir Dave B', @team.coach())
 end
 
-#Create a setter method to allow the coach's name to be updated.
-
 def test_set_coach()
   new_coach_name = 'Yatesy'
   @team.coach=(new_coach_name)
   assert_equal(new_coach_name, @team.coach())
 end
 
-# Refactor the class to use attr_reader or attr_accessor
-# instead of your own getter and setter methods.
+# Create a method that adds a new player to the player's array.
+
+def test_add_new_player()
+  new_player = 'Sergio Henao'
+  @team.add_new_player(new_player)
+  assert_equal(true, @team.players().include?(new_player))
+end
+
+
 
 end
