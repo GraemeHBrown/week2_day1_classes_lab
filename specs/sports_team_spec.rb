@@ -9,36 +9,66 @@ require_relative('../sports_team.rb')
 
 class TestSportsTeam < MiniTest::Test
 
-def setup
-  @team = SportsTeam.new('Sky',['Froomey','G','Stannard'], 'Sir Dave B')
-end
+  def setup
+    @team = SportsTeam.new('Sky',['Froomey','G','Stannard'], 'Sir Dave B')
+  end
 
-def test_get_name()
-  assert_equal('Sky', @team.name())
-end
+  def test_name()
+    assert_equal('Sky', @team.name())
+  end
 
-def test_get_players()
-  assert_equal(['Froomey','G','Stannard'], @team.players())
-end
+  def test_players()
+    assert_equal(['Froomey','G','Stannard'], @team.players())
+  end
 
-def test_get_coach()
-  assert_equal('Sir Dave B', @team.coach())
-end
+  def test_coach()
+    assert_equal('Sir Dave B', @team.coach())
+  end
 
-def test_set_coach()
-  new_coach_name = 'Yatesy'
-  @team.coach=(new_coach_name)
-  assert_equal(new_coach_name, @team.coach())
-end
+  def test_set_coach()
+    new_coach_name = 'Yatesy'
+    @team.coach=(new_coach_name)
+    assert_equal(new_coach_name, @team.coach())
+  end
 
-# Create a method that adds a new player to the player's array.
+  # Create a method that adds a new player to the player's array.
 
-def test_add_new_player()
-  new_player = 'Sergio Henao'
-  @team.add_new_player(new_player)
-  assert_equal(true, @team.players().include?(new_player))
-end
+  def test_add_new_player()
+    new_player = 'Sergio Henao'
+    existing_array_size = @team.players().size()
+    @team.add_new_player(new_player)
+    assert_equal(existing_array_size+1, @team.players().size())
+    assert_equal(true, @team.players().include?(new_player))
+  end
 
+  # Add a method that takes in a string of a player's name and
+  # checks to see if they are in the players array.
+
+  def test_is_player_in_team()
+    player_to_find1 = 'G'
+    player_to_find2 = 'GVA'
+    assert_equal(true, @team.is_player_in_team(player_to_find1))
+    assert_equal(false, @team.is_player_in_team(player_to_find2))
+  end
+
+  # Add a points property into your class that starts at 0.
+  def test_points()
+    assert_equal(0, @team.points())
+  end
+
+  def test_update_points__after_win()
+    has_won = true
+    existing_points = @team.points()
+    @team.update_points(has_won)
+    assert_equal(existing_points+5, @team.points())
+  end
+
+  def test_update_points__points_not_increased()
+    has_won = false
+    existing_points = @team.points()
+    @team.update_points(has_won)
+    assert_equal(existing_points, @team.points())
+  end
 
 
 end
