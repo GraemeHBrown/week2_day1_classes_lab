@@ -17,5 +17,13 @@ def test_get_name()
   assert_equal('Sky', @team.get_name())
 end
 
+def test_get_players()
+  assert_equal(['Froomey','G','Stannard'], @team.get_players())
+end
+
+def test_get_coach()
+  assert_equal('Sir Dave B', @team.get_coach())
+end
+
 
 end
