@@ -31,8 +31,6 @@ class TestSportsTeam < MiniTest::Test
     assert_equal(new_coach_name, @team.coach())
   end
 
-  # Create a method that adds a new player to the player's array.
-
   def test_add_new_player()
     new_player = 'Sergio Henao'
     existing_array_size = @team.players().size()
@@ -40,9 +38,6 @@ class TestSportsTeam < MiniTest::Test
     assert_equal(existing_array_size+1, @team.players().size())
     assert_equal(true, @team.players().include?(new_player))
   end
-
-  # Add a method that takes in a string of a player's name and
-  # checks to see if they are in the players array.
 
   def test_is_player_in_team()
     player_to_find1 = 'G'
@@ -52,6 +47,8 @@ class TestSportsTeam < MiniTest::Test
   end
 
   # Add a points property into your class that starts at 0.
+  #Note:  its initialised to 0 in constructor.  Not sure if this is
+  #best/only way of achieveing this?
   def test_points()
     assert_equal(0, @team.points())
   end
