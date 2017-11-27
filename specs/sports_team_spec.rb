@@ -25,5 +25,12 @@ def test_get_coach()
   assert_equal('Sir Dave B', @team.get_coach())
 end
 
+#Create a setter method to allow the coach's name to be updated.
+
+def test_set_coach()
+  new_coach_name = 'Yatesy'
+  @team.set_coach(new_coach_name)
+  assert_equal(new_coach_name, @team.get_coach())
+end
 
 end
